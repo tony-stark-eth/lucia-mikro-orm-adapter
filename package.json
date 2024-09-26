@@ -1,0 +1,66 @@
+{
+  "name": "@tony-stark-eth/lucia-mikro-orm-adapter",
+  "version": "1.0.0",
+  "description": "mikro-orm adapter for lucia auth",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "type": "module",
+  "packageManager": "pnpm@9.10.0",
+  "engines": {
+    "pnpm": "^9.0.0"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "pnpm run lint:fix && tsc && tsc-alias",
+    "release": "pnpm run lint:fix && release-it",
+    "lint": "pnpm run lint:base -- .",
+    "lint:base": "eslint --cache --cache-location='node_modules/.cache/eslint/'",
+    "lint:fix": "pnpm run lint:base --fix ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tony-stark-eth/lucia-mikro-orm-adapter.git"
+  },
+  "keywords": [
+    "lucia",
+    "lucia-auth",
+    "mikro-orm",
+    "adapter",
+    "lucia-auth-adapter"
+  ],
+  "author": "tony-stark-eth",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/tony-stark-eth/lucia-mikro-orm-adapter/issues"
+  },
+  "homepage": "https://github.com/tony-stark-eth/lucia-mikro-orm-adapter#readme",
+  "peerDependencies": {
+    "@mikro-orm/core": "^6.3.10",
+    "lucia": "^3.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.11.1",
+    "@mikro-orm/core": "^6.3.10",
+    "@stylistic/eslint-plugin": "^2.8.0",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^22.7.1",
+    "@types/uuid": "^10.0.0",
+    "eslint": "^9.11.1",
+    "lucia": "^3.2.0",
+    "release-it": "^17.6.0",
+    "release-it-pnpm": "^4.6.3",
+    "tsc-alias": "^1.8.10",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.7.0"
+  },
+  "dependencies": {
+    "uuid": "^10.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
