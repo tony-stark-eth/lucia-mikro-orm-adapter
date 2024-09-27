@@ -2,7 +2,6 @@ import { EntityManager } from '@mikro-orm/core';
 import { Session } from './Session';
 import { User } from './User';
 import { type Adapter, type UserId } from 'lucia';
-import * as console from 'node:console';
 
 export class MikroOrmAdapter implements Adapter {
   entityManager: EntityManager;
@@ -37,13 +36,11 @@ export class MikroOrmAdapter implements Adapter {
     const session = await this.entityManager.findOne(Session, { id: sessionId });
     const user = await this.entityManager.findOne(User, { id: session?.userId });
 
-    console.log(user);
-
-    return [session, user];
+    return structuredClone([session, user]);
   }
 
   async getUserSessions(userId: UserId): Promise<Session[]> {
-    return await this.entityManager.find(Session, { userId: userId });
+    return structuredClone(await this.entityManager.find(Session, { userId: userId }));
   }
 
   async setSession(session: Session): Promise<void> {
