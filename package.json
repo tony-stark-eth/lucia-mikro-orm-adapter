@@ -1,6 +1,6 @@
 {
   "name": "@tony-stark-eth/lucia-mikro-orm-adapter",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "mikro-orm adapter for lucia auth",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,14 +8,26 @@
   "type": "module",
   "packageManager": "pnpm@9.10.0",
   "engines": {
+    "node": "^20.0.0",
     "pnpm": "^9.0.0"
   },
   "exports": {
-    ".": "./dist/index.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js"
+    },
+    "./**/*": {
+      "types": "./dist/**/*.d.ts",
+      "import": "./dist/**/*.js"
+    }
   },
   "scripts": {
     "test": "tsx tests/mikro-orm-postgres.ts",
-    "build": "pnpm run lint:fix && tsc && tsc-alias",
+    "build": "pnpm run lint:fix && tsc -p tsconfig.json",
     "release": "pnpm run lint:fix && release-it",
     "lint": "pnpm run lint:base -- .",
     "lint:base": "eslint --cache --cache-location='node_modules/.cache/eslint/'",
@@ -49,10 +61,11 @@
     "@mikro-orm/postgresql": "^6.3.11",
     "@stylistic/eslint-plugin": "^2.8.0",
     "@types/eslint__js": "^8.42.3",
-    "@types/node": "^22.7.1",
+    "@types/node": "^20.0.0",
     "@types/uuid": "^10.0.0",
     "eslint": "^9.11.1",
     "lucia": "^3.2.0",
+    "npm-pkg-lint": "^3.9.0",
     "release-it": "^17.6.0",
     "release-it-pnpm": "^4.6.3",
     "tsc-alias": "^1.8.10",
@@ -65,5 +78,11 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ]
 }

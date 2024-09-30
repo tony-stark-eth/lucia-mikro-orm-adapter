@@ -1,6 +1,6 @@
 import { EntityManager } from '@mikro-orm/core';
-import { Session } from './Session';
-import { User } from './User';
+import { Session } from './Session.js';
+import { User } from './User.js';
 import { type Adapter, type UserId } from 'lucia';
 
 export class MikroOrmAdapter implements Adapter {

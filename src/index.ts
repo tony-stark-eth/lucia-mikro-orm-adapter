@@ -1,4 +1,4 @@
-export { MikroOrmAdapter } from './MikroOrmAdapter';
-export { Session } from './Session';
-export { User } from './User';
-export { OAuthProviderAttributes } from './embeddable/OAuthProviderAttributes';
+export { MikroOrmAdapter } from './MikroOrmAdapter.js';
+export { Session } from './Session.js';
+export { User } from './User.js';
+export { OAuthProviderAttributes } from './embeddable/OAuthProviderAttributes.js';

@@ -1,6 +1,6 @@
-import type { DatabaseUser } from 'lucia/dist/database';
+import type { DatabaseUser } from 'lucia';
 
-import { OAuthProviderAttributes } from './embeddable/OAuthProviderAttributes';
+import { OAuthProviderAttributes } from './embeddable/OAuthProviderAttributes.js';
 import { Embedded, Entity, PrimaryKey, Property, types } from '@mikro-orm/core';
 import { v4 } from 'uuid';
 
