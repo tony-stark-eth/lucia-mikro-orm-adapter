@@ -1,0 +1,15 @@
+services:
+  database:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DATABASE_USER:-lucia}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-lucia}
+      POSTGRES_DB: ${DATABASE_NAME:-lucia}
+    ports:
+      - "5432:5432"
+    volumes:
+      - database:/var/lib/postgresql/data      -
+volumes:
+  database:
+    driver: local

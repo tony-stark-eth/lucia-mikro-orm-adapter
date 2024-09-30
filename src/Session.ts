@@ -1,4 +1,4 @@
-import type { DatabaseSession } from 'lucia/dist/database';
+import type { DatabaseSession } from 'lucia';
 
 import { Entity, PrimaryKey, Property, types } from '@mikro-orm/core';
 import { v4 } from 'uuid';
