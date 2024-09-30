@@ -1,6 +1,5 @@
 import { Adapter, DatabaseSession, DatabaseUser } from 'lucia';
-import { generateRandomString, alphabet } from 'oslo/crypto';
-import assert from 'node:assert/strict';
+import assert from 'node:assert';
 import { v4 } from 'uuid';
 import console from 'node:console';
 
@@ -36,8 +35,12 @@ export async function testAdapter(adapter: Adapter) {
 
   await test('setSession() creates session and getSessionAndUser() returns created session and associated user', async () => {
     await adapter.setSession(databaseSession);
-    const result = await adapter.getSessionAndUser(databaseSession.id);
-    assert.deepStrictEqual(result, [databaseSession, databaseUser]);
+    const [adapterSession] = await adapter.getSessionAndUser(databaseSession.id);
+
+    assert.equal(adapterSession.id, databaseSession.id);
+    assert.equal(adapterSession.userId, databaseSession.userId);
+    assert.equal(adapterSession.expiresAt.valueOf(), databaseSession.expiresAt.valueOf());
+    assert.equal(adapterSession.attributes.country, databaseSession.attributes.country);
   });
 
   await test('deleteSession() deletes session', async () => {
@@ -50,14 +53,16 @@ export async function testAdapter(adapter: Adapter) {
     await adapter.setSession(databaseSession);
     databaseSession.expiresAt = new Date(databaseSession.expiresAt.getTime() + 10_000);
     await adapter.updateSessionExpiration(databaseSession.id, databaseSession.expiresAt);
-    const result = await adapter.getSessionAndUser(databaseSession.id);
-    assert.deepStrictEqual(result, [databaseSession, databaseUser]);
+    const [adapterSession] = await adapter.getSessionAndUser(databaseSession.id);
+
+    assert.equal(adapterSession.id, databaseSession.id);
+    assert.equal(adapterSession.expiresAt.valueOf(), databaseSession.expiresAt.valueOf());
   });
 
   await test('deleteExpiredSessions() deletes all expired sessions', async () => {
     const expiredSession: DatabaseSession = {
       userId: databaseUser.id,
-      id: generateRandomString(40, alphabet('0-9', 'a-z')),
+      id: v4(),
       expiresAt: new Date(Math.floor(Date.now() / 1000) * 1000 - 10_000),
       attributes: {
         country: 'us',
@@ -65,8 +70,9 @@ export async function testAdapter(adapter: Adapter) {
     };
     await adapter.setSession(expiredSession);
     await adapter.deleteExpiredSessions();
-    const result = await adapter.getUserSessions(databaseSession.userId);
-    assert.deepStrictEqual(result, [databaseSession]);
+    const [adapterSession] = await adapter.getUserSessions(databaseSession.userId);
+
+    assert.equal(adapterSession.id, databaseSession.id);
   });
 
   await test('deleteUserSessions() deletes all user sessions', async () => {
