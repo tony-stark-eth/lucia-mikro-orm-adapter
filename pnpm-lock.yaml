@@ -20,7 +20,7 @@ importers:
         version: 6.3.11
       '@mikro-orm/postgresql':
         specifier: ^6.3.11
-        version: 6.3.11(@mikro-orm/core@6.3.11)
+        version: 6.3.13(@mikro-orm/core@6.3.11)
       '@stylistic/eslint-plugin':
         specifier: ^2.8.0
         version: 2.8.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2)
@@ -297,8 +297,8 @@ packages:
     resolution: {integrity: sha512-pNd74bIDwpWMC0TV4R3hPIddzaydDzvv5pRi7QvX6UdASDEUdWfp185cH6QRi1bbWqlI70GXOBR8Bnzj1bbtpA==}
     engines: {node: '>= 18.12.0'}
 
-  '@mikro-orm/knex@6.3.11':
-    resolution: {integrity: sha512-RDT3s+FTpB5rP81s7yVdgvTBwt4gRGUBsL08WPmlroJ8ADrLQVdywQPOIdXFhoDNDJPVD7Ht/KGvy2IyIpuOeg==}
+  '@mikro-orm/knex@6.3.13':
+    resolution: {integrity: sha512-+ws7bEFbgw2fLYry9KZJ2pQpGgzCsoke/sFn0Dn8vNznqdq5ktJMGj5kxBRsLhzGQ4zS1wjgn0JJELqXVtPX5g==}
     engines: {node: '>= 18.12.0'}
     peerDependencies:
       '@mikro-orm/core': ^6.0.0
@@ -313,8 +313,8 @@ packages:
       mariadb:
         optional: true
 
-  '@mikro-orm/postgresql@6.3.11':
-    resolution: {integrity: sha512-0SXVybnarlTOiO1wm77ZGTB9243u3WC2OXyKosTmJUoVRvrwMDZrbuiHjRdRNZQQH9zV7wuRNOY7JyMJ/HUaBQ==}
+  '@mikro-orm/postgresql@6.3.13':
+    resolution: {integrity: sha512-0U2/wW4ff/DNMTNRhe3TE/SHibrI7loPuBQffjHZCWWs8KPjI46EN4oTjvY7LNNOPWzfS+UpxafNHUR+zrfuZQ==}
     engines: {node: '>= 18.12.0'}
     peerDependencies:
       '@mikro-orm/core': ^6.0.0
@@ -2735,7 +2735,7 @@ snapshots:
       mikro-orm: 6.3.11
       reflect-metadata: 0.2.2
 
-  '@mikro-orm/knex@6.3.11(@mikro-orm/core@6.3.11)(pg@8.13.0)':
+  '@mikro-orm/knex@6.3.13(@mikro-orm/core@6.3.11)(pg@8.13.0)':
     dependencies:
       '@mikro-orm/core': 6.3.11
       fs-extra: 11.2.0
@@ -2750,10 +2750,10 @@ snapshots:
       - supports-color
       - tedious
 
-  '@mikro-orm/postgresql@6.3.11(@mikro-orm/core@6.3.11)':
+  '@mikro-orm/postgresql@6.3.13(@mikro-orm/core@6.3.11)':
     dependencies:
       '@mikro-orm/core': 6.3.11
-      '@mikro-orm/knex': 6.3.11(@mikro-orm/core@6.3.11)(pg@8.13.0)
+      '@mikro-orm/knex': 6.3.13(@mikro-orm/core@6.3.11)(pg@8.13.0)
       pg: 8.13.0
       postgres-array: 3.0.2
       postgres-date: 2.1.0
